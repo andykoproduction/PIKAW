@@ -1,133 +1,491 @@
-<div align="center">
-  <img src="./media/header_ai.png" >
-</div>
+# TanStack AI Examples
 
-<br />
+This directory contains comprehensive examples demonstrating TanStack AI across multiple languages and frameworks.
 
-<div align="center">
-<a href="https://npmjs.com/package/@tanstack/ai" target="\_parent">
-  <img alt="" src="https://img.shields.io/npm/dm/@tanstack/ai.svg" />
-</a>
-<a href="https://github.com/TanStack/ai" target="\_parent">
-	  <img alt="" src="https://img.shields.io/github/stars/TanStack/ai.svg?style=social&label=Star" alt="GitHub stars" />
-</a>
-<a href="https://bundlephobia.com/result?p=@tanstack/ai@latest" target="\_parent">
-  <img alt="" src="https://badgen.net/bundlephobia/minzip/@tanstack/ai@latest" />
-</a>
-</div>
+## Quick Start
 
-<div align="center">
-<a href="#badge">
-  <img alt="semantic-release" src="https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg">
-</a>
-	<a href="#badge">
-		<img src="https://img.shields.io/github/v/release/tanstack/ai" alt="Release"/>
-	</a>
-<a href="https://twitter.com/tan_stack">
-  <img src="https://img.shields.io/twitter/follow/tan_stack.svg?style=social" alt="Follow @TanStack"/>
-</a>
-</div>
+Choose an example based on your use case:
 
-<div align="center">
-  
-### [Become a Sponsor!](https://github.com/sponsors/tannerlinsley/)
-</div>
+- **Want a full-stack TypeScript app?** → [TanStack Chat (ts-react-chat)](#tanstack-chat-ts-react-chat)
+- **Need a vanilla JS frontend?** → [Vanilla Chat](#vanilla-chat)
+- **Building a Python backend?** → [Python FastAPI Server](#python-fastapi-server)
+- **Building a PHP backend?** → [PHP Slim Framework Server](#php-slim-framework-server)
+- **Multi-User TypeScript chat app?** → [Group Chat (ts-group-chat)](#group-chat-ts-group-chat)
 
-# TanStack AI
+## TypeScript Examples
 
-A powerful, type-safe AI SDK for building AI-powered applications.
+### TanStack Chat (ts-react-chat)
 
-- Provider-agnostic adapters (OpenAI, Anthropic, Gemini, Ollama, etc.)
-- **Tree-shakeable adapters** - Import only what you need for smaller bundles
-- **Multimodal content support** - Send images, audio, video, and documents
-- **Image generation** - Generate images with OpenAI DALL-E/GPT-Image and Gemini Imagen
-- Chat completion, streaming, and agent loop strategies
-- Headless chat state management with adapters (SSE, HTTP stream, custom)
-- Isomorphic type-safe tools with server/client execution
-- **Enhanced integration with TanStack Start** - Share implementations between AI tools and server functions
-- **Observability events** - Structured, typed events for text, tools, image, speech, transcription, and video ([docs](./docs/guides/observability.md))
+A full-featured chat application built with the TanStack ecosystem.
 
-### <a href="https://tanstack.com/ai">Read the docs →</a>
+**Tech Stack:**
 
-## Tree-Shakeable Adapters
+- TanStack Start (full-stack React framework)
+- TanStack Router (type-safe routing)
+- TanStack Store (state management)
+- `@tanstack/ai` (AI backend)
+- `@tanstack/ai-react` (React hooks)
+- `@tanstack/ai-client` (headless client)
 
-Import only the functionality you need for smaller bundle sizes:
+**Features:**
+
+- ✅ Real-time streaming with OpenAI GPT-4o
+- ✅ Automatic tool execution loop
+- ✅ Rich markdown rendering
+- ✅ Conversation management
+- ✅ Modern UI with Tailwind CSS
+
+**Getting Started:**
+
+```bash
+cd examples/ts-react-chat
+pnpm install
+cp env.example .env
+# Edit .env and add your OPENAI_API_KEY
+pnpm start
+```
+
+📖 [Full Documentation](ts-react-chat/README.md)
+
+---
+
+### Group Chat (ts-group-chat)
+
+A real-time multi-user chat application with AI integration, demonstrating WebSocket-based communication and TanStack AI.
+
+**Tech Stack:**
+
+- TanStack Start (full-stack React framework)
+- TanStack Router (type-safe routing)
+- Cap'n Web RPC (bidirectional WebSocket RPC)
+- `@tanstack/ai` (AI backend)
+- `@tanstack/ai-anthropic` (Claude adapter)
+- `@tanstack/ai-client` (headless client)
+- `@tanstack/ai-react` (React hooks)
+
+**Features:**
+
+- ✅ Real-time multi-user chat with WebSocket
+- ✅ Online presence tracking
+- ✅ AI assistant (Claude) integration with queuing
+- ✅ Message broadcasting to all users
+- ✅ Modern chat UI (iMessage-style)
+- ✅ Username-based authentication (no registration)
+
+**Getting Started:**
+
+```bash
+cd examples/ts-group-chat
+pnpm install
+cp .env.example .env
+# Edit .env and add your ANTHROPIC_API_KEY
+pnpm dev
+```
+
+Open `http://localhost:4000` in multiple browser tabs to test multi-user functionality.
+
+**Key Concepts:**
+
+- **WebSocket RPC**: Uses Cap'n Web RPC for type-safe bidirectional communication
+- **AI Queuing**: Claude requests are queued and processed sequentially
+- **Real-time Updates**: Messages and online users update in real-time
+- **Message Broadcasting**: Server broadcasts messages to all connected clients
+
+📖 [Full Documentation](ts-group-chat/README.md)
+
+---
+
+### Vanilla Chat
+
+A framework-free chat application using pure JavaScript and `@tanstack/ai-client`. Works with both PHP and Python backends.
+
+**Tech Stack:**
+
+- Vanilla JavaScript (no frameworks!)
+- `@tanstack/ai-client` (headless client)
+- Vite (dev server)
+- Compatible with PHP Slim or Python FastAPI backends
+
+**Features:**
+
+- ✅ Pure vanilla JavaScript
+- ✅ Real-time streaming messages
+- ✅ Beautiful, responsive UI
+- ✅ No framework dependencies
+- ✅ Works with multiple backend languages
+
+**Getting Started:**
+
+**Option 1: With Python Backend**
+
+```bash
+# Start the Python backend first
+cd examples/python-fastapi
+python anthropic-server.py
+
+# Then start the frontend
+cd examples/vanilla-chat
+pnpm install
+pnpm start
+```
+
+**Option 2: With PHP Backend**
+
+```bash
+# Start the PHP backend and UI together
+cd examples/php-slim
+pnpm install
+composer install
+cp env.example .env
+# Edit .env and add your ANTHROPIC_API_KEY
+pnpm start
+```
+
+Open `http://localhost:3001` (UI) - connects to backend on port 8000
+
+📖 [Full Documentation](vanilla-chat/README.md)
+
+---
+
+## Python Examples
+
+### Python FastAPI Server
+
+A FastAPI server that streams AI responses in Server-Sent Events (SSE) format, compatible with TanStack AI clients.
+
+**Features:**
+
+- ✅ FastAPI with SSE streaming
+- ✅ Converts Anthropic/OpenAI events to `StreamChunk` format
+- ✅ Compatible with `@tanstack/ai-client`
+- ✅ Tool call support
+- ✅ Type-safe with Pydantic
+
+**Getting Started:**
+
+```bash
+cd examples/python-fastapi
+
+# Create virtual environment
+python3 -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Set up environment
+cp env.example .env
+# Edit .env and add your ANTHROPIC_API_KEY or OPENAI_API_KEY
+
+# Run the server
+python anthropic-server.py  # or openai-server.py
+```
+
+**API Endpoints:**
+
+- `POST /chat` - Stream chat responses in SSE format
+- `GET /health` - Health check
+
+**Usage with TypeScript Client:**
 
 ```typescript
-// Only chat functionality - no summarization code bundled
-import { openaiText } from '@tanstack/ai-openai/adapters'
-import { generate } from '@tanstack/ai'
+import { ChatClient, fetchServerSentEvents } from '@tanstack/ai-client'
 
-const textAdapter = openaiText()
-
-const result = generate({
-  adapter: textAdapter,
-  model: 'gpt-4o',
-  messages: [{ role: 'user', content: [{ type: 'text', content: 'Hello!' }] }],
+const client = new ChatClient({
+  connection: fetchServerSentEvents('http://localhost:8000/chat'),
 })
 
-for await (const chunk of result) {
-  console.log(chunk)
+await client.sendMessage('Hello!')
+```
+
+📖 [Full Documentation](python-fastapi/README.md)
+
+---
+
+## PHP Examples
+
+### PHP Slim Framework Server
+
+A PHP Slim Framework server that streams AI responses in SSE format, with support for both Anthropic and OpenAI.
+
+**Features:**
+
+- ✅ Slim Framework with SSE streaming
+- ✅ Converts Anthropic/OpenAI events to `StreamChunk` format
+- ✅ Compatible with `@tanstack/ai-client`
+- ✅ Tool call support
+- ✅ PHP 8.1+ with type safety
+
+**Getting Started:**
+
+```bash
+cd examples/php-slim
+
+# Install dependencies
+composer install
+
+# Set up environment
+cp env.example .env
+# Edit .env and add your ANTHROPIC_API_KEY and/or OPENAI_API_KEY
+
+# Run the server
+composer start-anthropic  # Runs on port 8000
+# or
+composer start-openai     # Runs on port 8001
+```
+
+**API Endpoints:**
+
+- `POST /chat` - Stream chat responses in SSE format
+- `GET /health` - Health check
+
+**Usage with TypeScript Client:**
+
+```typescript
+import { ChatClient, fetchServerSentEvents } from '@tanstack/ai-client'
+
+const client = new ChatClient({
+  connection: fetchServerSentEvents('http://localhost:8000/chat'),
+})
+
+await client.sendMessage('Hello!')
+```
+
+📖 [Full Documentation](php-slim/README.md)
+
+---
+
+## Architecture Patterns
+
+### Full-Stack TypeScript
+
+Use TanStack AI end-to-end in TypeScript:
+
+```
+Frontend (React)
+  ↓ (useChat hook)
+@tanstack/ai-react
+  ↓ (ChatClient)
+@tanstack/ai-client
+  ↓ (SSE/HTTP)
+Backend (TanStack Start API Route)
+  ↓ (chat() function)
+@tanstack/ai
+  ↓ (adapter)
+AI Provider (OpenAI/Anthropic/etc.)
+```
+
+**Example:** [TanStack Chat (ts-react-chat)](ts-react-chat/README.md)
+
+### Multi-Language Backend
+
+Use Python or PHP for the backend, TypeScript for the frontend:
+
+```
+Frontend (Vanilla JS/React/Vue/etc.)
+  ↓ (ChatClient)
+@tanstack/ai-client
+  ↓ (SSE/HTTP)
+Backend (Python FastAPI or PHP Slim)
+  ↓ (tanstack-ai or tanstack/ai)
+Stream Conversion & Message Formatting
+  ↓ (provider SDK)
+AI Provider (OpenAI/Anthropic/etc.)
+```
+
+**Examples:**
+
+- [Python FastAPI](python-fastapi/README.md) + [Vanilla Chat](vanilla-chat/README.md)
+- [PHP Slim](php-slim/README.md) + [Vanilla Chat](vanilla-chat/README.md)
+- [PHP Slim](php-slim/README.md) + any frontend with `@tanstack/ai-client`
+
+## Common Patterns
+
+### Server-Sent Events (SSE) Streaming
+
+All examples use SSE for real-time streaming:
+
+**Backend (TypeScript):**
+
+```typescript
+import { chat, toServerSentEventsResponse } from '@tanstack/ai'
+import { openaiText } from '@tanstack/ai-openai'
+
+const stream = chat({
+  adapter: openaiText(),
+  model: 'gpt-4o',
+  messages,
+})
+
+return toServerSentEventsResponse(stream)
+```
+
+**Backend (Python):**
+
+```python
+from tanstack_ai import StreamChunkConverter, format_sse_chunk
+
+async for event in anthropic_stream:
+    chunks = await converter.convert_event(event)
+    for chunk in chunks:
+        yield format_sse_chunk(chunk)
+```
+
+**Backend (PHP):**
+
+```php
+use TanStack\AI\StreamChunkConverter;
+use TanStack\AI\SSEFormatter;
+
+foreach ($anthropicStream as $event) {
+    $chunks = $converter->convertEvent($event);
+    foreach ($chunks as $chunk) {
+        echo SSEFormatter::formatChunk($chunk);
+    }
 }
 ```
 
-Available adapters: `openaiText`, `openaiEmbed`, `openaiSummarize`, `anthropicText`, `geminiText`, `ollamaText`, and more.
+**Frontend:**
 
-## Get Involved
+```typescript
+import { ChatClient, fetchServerSentEvents } from '@tanstack/ai-client'
 
-- We welcome issues and pull requests!
-- Participate in [GitHub discussions](https://github.com/TanStack/ai/discussions)
-- Chat with the community on [Discord](https://discord.com/invite/WrRKjPJ)
-- See [CONTRIBUTING.md](./CONTRIBUTING.md) for setup instructions
+const client = new ChatClient({
+  connection: fetchServerSentEvents('/api/chat'),
+})
+```
 
-## Partners
+### Automatic Tool Execution
 
-<table align="center">
-  <tr>
-    <td>
-      <a href="https://www.coderabbit.ai/?via=tanstack&dub_id=aCcEEdAOqqutX6OS" >
-        <picture>
-          <source media="(prefers-color-scheme: dark)" srcset="https://tanstack.com/assets/coderabbit-dark-CMcuvjEy.svg" height="40" />
-          <source media="(prefers-color-scheme: light)" srcset="https://tanstack.com/assets/coderabbit-light-DVMJ2jHi.svg" height="40" />
-          <img src="https://tanstack.com/assets/coderabbit-light-DVMJ2jHi.svg" height="40" alt="CodeRabbit" />
-        </picture>
-      </a>
-    </td>
-    <td>
-      <a href="https://www.cloudflare.com?utm_source=tanstack">
-        <picture>
-          <source media="(prefers-color-scheme: dark)" srcset="https://tanstack.com/assets/cloudflare-white-DQDB7UaL.svg" height="60" />
-          <source media="(prefers-color-scheme: light)" srcset="https://tanstack.com/assets/cloudflare-black-CPufaW0B.svg" height="60" />
-          <img src="https://tanstack.com/assets/cloudflare-black-CPufaW0B.svg" height="60" alt="Cloudflare" />
-        </picture>
-      </a>
-    </td>
-  </tr>
-</table>
+The TypeScript backend (`@tanstack/ai`) automatically handles tool execution:
 
-<div align="center">
-<img src="./media/partner_logo.svg" alt="AI & you?" height="65">
-<p>
-We're looking for TanStack AI Partners to join our mission! Partner with us to push the boundaries of TanStack AI and build amazing things together.
-</p>
-<a href="mailto:partners@tanstack.com?subject=TanStack AI Partnership"><b>LET'S CHAT</b></a>
-</div>
+```typescript
+import { chat, toolDefinition } from '@tanstack/ai'
+import { z } from 'zod'
 
-## Explore the TanStack Ecosystem
+// Step 1: Define the tool schema
+const weatherToolDef = toolDefinition({
+  name: 'getWeather',
+  description: 'Get weather for a location',
+  inputSchema: z.object({
+    location: z.string().describe('The city and state, e.g. San Francisco, CA'),
+  }),
+  outputSchema: z.object({
+    temp: z.number(),
+    condition: z.string(),
+  }),
+})
 
-- <a href="https://github.com/tanstack/config"><b>TanStack Config</b></a> – Tooling for JS/TS packages
-- <a href="https://github.com/tanstack/db"><b>TanStack DB</b></a> – Reactive sync client store
-- <a href="https://github.com/tanstack/devtools"><b>TanStack Devtools</b></a> – Unified devtools panel
-- <a href="https://github.com/tanstack/form"><b>TanStack Form</b></a> – Type‑safe form state
-- <a href="https://github.com/tanstack/pacer"><b>TanStack Pacer</b></a> – Debouncing, throttling, batching
-- <a href="https://github.com/tanstack/query"><b>TanStack Query</b></a> – Async state & caching
-- <a href="https://github.com/tanstack/ranger"><b>TanStack Ranger</b></a> – Range & slider primitives
-- <a href="https://github.com/tanstack/router"><b>TanStack Router</b></a> – Type‑safe routing, caching & URL state
-- <a href="https://github.com/tanstack/router"><b>TanStack Start</b></a> – Full‑stack SSR & streaming
-- <a href="https://github.com/tanstack/store"><b>TanStack Store</b></a> – Reactive data store
-- <a href="https://github.com/tanstack/table"><b>TanStack Table</b></a> – Headless datagrids
-- <a href="https://github.com/tanstack/virtual"><b>TanStack Virtual</b></a> – Virtualized rendering
+// Step 2: Create server implementation
+const weatherTool = weatherToolDef.server(async ({ location }) => {
+  // This is called automatically by the SDK
+  return { temp: 72, condition: 'sunny' }
+})
 
-… and more at <a href="https://tanstack.com"><b>TanStack.com »</b></a>
+const stream = chat({
+  adapter: openaiText(),
+  model: 'gpt-4o',
+  messages,
+  tools: [weatherTool], // SDK executes these automatically
+})
+```
 
-<!-- USE THE FORCE LUKE -->
+Clients receive:
+
+- `content` chunks - text from the model
+- `tool_call` chunks - when the model calls a tool
+- `tool_result` chunks - results from tool execution
+- `done` chunk - conversation complete
+
+---
+
+## Development Tips
+
+### Running Multiple Examples
+
+You can run backend and frontend examples together:
+
+```bash
+# Option 1: Python backend + Vanilla Chat frontend
+# Terminal 1: Start Python backend
+cd examples/python-fastapi
+python anthropic-server.py
+
+# Terminal 2: Start vanilla frontend
+cd examples/vanilla-chat
+pnpm start
+
+# Option 2: PHP backend + Vanilla Chat frontend (runs together)
+cd examples/php-slim
+pnpm start  # Starts both PHP server and vanilla-chat UI
+
+# Option 3: Full-stack TypeScript
+cd examples/ts-react-chat
+pnpm start
+```
+
+### Environment Variables
+
+Each example has an `env.example` file. Copy it to `.env` and add your API keys:
+
+```bash
+# TypeScript examples
+OPENAI_API_KEY=sk-...
+ANTHROPIC_API_KEY=sk-ant-...
+
+# Python examples
+ANTHROPIC_API_KEY=sk-ant-...
+OPENAI_API_KEY=sk-...
+
+# PHP examples
+ANTHROPIC_API_KEY=sk-ant-...
+OPENAI_API_KEY=sk-...
+```
+
+### Building for Production
+
+**TypeScript:**
+
+```bash
+pnpm build
+```
+
+**Python:**
+
+```bash
+# Use a production ASGI server
+uvicorn anthropic-server:app --host 0.0.0.0 --port 8000
+```
+
+**PHP:**
+
+```bash
+# Use a production web server (Apache, Nginx, etc.)
+# See php-slim/README.md for deployment details
+```
+
+---
+
+## Contributing
+
+When adding new examples:
+
+1. **Create a README.md** with setup instructions
+2. **Add an env.example** file with required environment variables
+3. **Document the tech stack** and key features
+4. **Include usage examples** with code snippets
+5. **Update this README** to list your example
+
+---
+
+## Learn More
+
+- 📖 [Main README](../README.md) - Project overview
+- 📖 [Documentation](../docs/) - Comprehensive guides
+- 📖 [TypeScript Packages](../packages/typescript/) - Core libraries
+- 📖 [Python Package](../packages/python/tanstack-ai/) - Python utilities
+- 📖 [PHP Package](../packages/php/tanstack-ai/) - PHP utilities
+
+---
+
+Built with ❤️ by the TanStack community
