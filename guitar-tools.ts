@@ -20,13 +20,7 @@ export const getGuitarsToolDef = toolDefinition({
 })
 
 // Server implementation
-export const getGuitars = getGuitarsToolDef.server((_, context) => {
-  context?.emitCustomEvent('tool:progress', {
-    tool: 'getGuitars',
-    message: `Fetching ${guitars.length} guitars from inventory`,
-  })
-  return guitars
-})
+export const getGuitars = getGuitarsToolDef.server(() => guitars)
 
 // Tool definition for guitar recommendation
 export const recommendGuitarToolDef = toolDefinition({

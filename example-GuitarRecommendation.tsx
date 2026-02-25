@@ -1,9 +1,6 @@
-import { useNavigate } from '@tanstack/react-router'
-
 import guitars from '../data/example-guitars'
 
 export default function GuitarRecommendation({ id }: { id: string }) {
-  const navigate = useNavigate()
   const guitar = guitars.find((guitar) => guitar.id === +id)
   if (!guitar) {
     return null
@@ -26,17 +23,6 @@ export default function GuitarRecommendation({ id }: { id: string }) {
           <div className="text-lg font-bold text-emerald-400">
             ${guitar.price}
           </div>
-          <button
-            onClick={() => {
-              navigate({
-                to: '/example/guitars/$guitarId',
-                params: { guitarId: guitar.id.toString() },
-              })
-            }}
-            className="bg-linear-to-r from-orange-500 to-red-600 text-white px-4 py-1.5 rounded-lg text-sm hover:opacity-90 transition-opacity"
-          >
-            View Details
-          </button>
         </div>
       </div>
     </div>

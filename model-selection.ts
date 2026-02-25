@@ -52,18 +52,6 @@ export const MODEL_OPTIONS: Array<ModelOption> = [
     label: 'Gemini - 2.5 Pro',
   },
 
-  // Openrouter
-  {
-    provider: 'openrouter',
-    model: 'openai/chatgpt-4o-latest',
-    label: 'Openrouter - ChatGPT 4o Latest',
-  },
-  {
-    provider: 'openrouter',
-    model: 'openai/chatgpt-4o-mini',
-    label: 'Openrouter - ChatGPT 4o Mini',
-  },
-
   // Ollama
   {
     provider: 'ollama',
@@ -95,7 +83,7 @@ export const MODEL_OPTIONS: Array<ModelOption> = [
   {
     provider: 'grok',
     model: 'grok-4',
-    label: 'Grok - Grok 4',
+    label: 'Grok - Grok 4 - slow thinking',
   },
   {
     provider: 'grok',
@@ -112,6 +100,30 @@ export const MODEL_OPTIONS: Array<ModelOption> = [
     model: 'grok-3-mini',
     label: 'Grok - Grok 3 Mini',
   },
+
+  // OpenRouter
+  {
+    provider: 'openrouter',
+    model: 'openai/gpt-4o',
+    label: 'OpenRouter - GPT-4o',
+  },
+  {
+    provider: 'openrouter',
+    model: 'anthropic/claude-sonnet-4',
+    label: 'OpenRouter - Claude Sonnet 4',
+  },
+  {
+    provider: 'openrouter',
+    model: 'google/gemini-2.0-flash-001',
+    label: 'OpenRouter - Gemini 2.0 Flash',
+  },
+  {
+    provider: 'openrouter',
+    model: 'meta-llama/llama-3.3-70b-instruct',
+    label: 'OpenRouter - Llama 3.3 70B',
+  },
 ]
 
-export const DEFAULT_MODEL_OPTION = MODEL_OPTIONS[0]
+export function getDefaultModelOption(): ModelOption {
+  return MODEL_OPTIONS[0]
+}

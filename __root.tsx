@@ -1,5 +1,5 @@
-import { HeadContent, Scripts, createRootRoute } from '@tanstack/react-router'
-import Header from '../components/Header'
+import { createRootRoute, HeadContent, Scripts } from '@tanstack/react-router'
+import Header from '@/components/Header'
 import appCss from '../styles.css?url'
 
 export const Route = createRootRoute({
@@ -13,7 +13,7 @@ export const Route = createRootRoute({
         content: 'width=device-width, initial-scale=1',
       },
       {
-        title: 'TanStack AI Visual - Image & Video Generation',
+        title: 'TanStack AI Testing Panel',
       },
     ],
     links: [
@@ -33,9 +33,9 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       <head>
         <HeadContent />
       </head>
-      <body className="bg-gray-900 min-h-screen">
+      <body>
         <Header />
-        {children}
+        <div className="min-h-screen bg-gray-900">{children}</div>
         <Scripts />
       </body>
     </html>
